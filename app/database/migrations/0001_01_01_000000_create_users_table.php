@@ -17,8 +17,8 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->integer('platimun');
-            $table->integer('trophy_num');
+            $table->integer('platimun')->nullable();
+            $table->integer('trophy_num')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

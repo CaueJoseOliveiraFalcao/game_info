@@ -18,14 +18,22 @@ class RegisteredUserController extends Controller
      *
      * @throws \Illuminate\Validation\ValidationException
      */
+    public function show(){
+        return view('register');
+    }
     public function store(Request $request): Response
     {
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
-            'password' => ['required', 'confirmed', Rules\Password::defaults()],
+            'password' => ['required'],
+        ], [
+            'name.required' => 'O campo nome é obrigatório.',
+            'email.required' => 'O campo email é obrigatório.',
+            'email.email' => 'O email informado não é válido.',
+            'email.unique' => 'Este email já está cadastrado.',
+            'password.required' => 'O campo senha é obrigatório.',
         ]);
-
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
