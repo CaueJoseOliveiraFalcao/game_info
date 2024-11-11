@@ -13,6 +13,11 @@ return [
     | a conventional file to locate the various service credentials.
     |
     */
+    'xbox' => [
+        'client_id' => env('XBOX_CLIENT_ID'),
+        'client_secret' => env('XBOX_CLIENT_SECRET'),
+        'redirect' => env('XBOX_REDIRECT_URI'),
+    ],
 
     'postmark' => [
         'token' => env('POSTMARK_TOKEN'),
